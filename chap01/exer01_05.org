@@ -1,0 +1,55 @@
+* Exercise 1.5 [**] (page 12)
+
+Prove that if $e$ \in LcExp, then there are the same number of left and right
+parentheses in $e$.
+
+\vspace{5mm}
+Lambda calculus expressions (shorthand LcExp), are defined on page 9 as follows:
+
+The lambda calculus is a simple language that is often used to study the theory
+of programming languages. This language consists only of variable references,
+procedures that take a single argument, and procedure calls. We can define it
+with the grammar:
+
+#+BEGIN_EXAMPLE
+LcExp := Identifier
+      := (lambda (Identifier) LcExp)
+      := (LcExp LcExp)
+#+END_EXAMPLE
+
+--------------------------------------------------------------------------------
+
+\paragraph{Induction hypothesis.} Assume that if an LcExp has $s <= k$ left
+parentheses then there are exactly $s$ right parentheses.
+
+\paragraph{Base case.}  If the number of left parentheses in e is 0, then we
+conclude that we have a variable reference, and so the number of right
+parentheses is also 0.
+
+\paragraph{$(k + 1)$-th case.}
+Suppose then that $e$ has $k + 1$ left parentheses.  Then at its outermost level, $e$
+must either be a lambda expression or a procedure call.  We consider both cases
+individually.
+
+Suppose first that $e$ is a lambda expression, then it has the form
+#+BEGIN_EXAMPLE
+(lambda (Identifier) e1)
+#+END_EXAMPLE
+Thus there are exactly 2 left parentheses outside of \verb!e1!, so consequently
+\verb!e1! has $s = (k + 1) - 2 = k - 1$ left parentheses.  Then it follows by
+the induction hypothesis that \verb!e1! also has $s$ right parenthesis due.
+Since the surrounding term outside of \verb!e1!  has an equal number left and
+right parentheses (i.e. 2), we conclude that the total expression has an equal
+number of parentheses.
+
+Next, suppose that $e$ is a procedure call, then it has the form
+#+BEGIN_EXAMPLE
+(e1 e2)
+#+END_EXAMPLE
+Let us denote the number of left parentheses in \verb!e1! and \verb!e2! as $s$
+and $t$, respectively.  Then, since there is a left parenthesis in the
+expression outside of \verb!e1! and \verb!e2!, it follows that $s + t =
+(k + 1) - 1 = k$.  Since $s$ and $t$ are both nonnegative, we conclude that both
+$s \leq k$ and $t \leq k$.  Thus, by the induction hypothesis \verb!e1! and \verb!e2!
+both have the same number of left and right parenthesis, and as a result the
+entire expression has the same number of left and right parenthesis.

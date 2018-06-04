@@ -1,0 +1,107 @@
+Exercise 1.1 [*] Write inductive definitions of the following sets. Write each
+definition in all three styles (top-down, bottom-up, and rules of
+inference). Using your rules, show the derivation of some sample elements of
+each set.  Page 5.
+
+1.  { 3n + 2 | n \in N }
+2.  { 2n + 3m + 1 | n, m \in N }
+3.  { (n, 2n + 1) | n \in N }
+4.  { (n, n^2) | n \in N } Do not mention squaring in your rules.  As a hint,
+    remember the equation (n + 1)^2 = n^2 + 2n + 1
+
+--------------------------------------------------------------------------------
+
+
+
+
+1.  S = { 3n + 2 | n \in N }
+
+top-down: a natural number n is in S if and only if:
+    i.  n = 2, or
+    ii. n - 3 \in S
+
+bottom-up: the smallest set S contained in the natural numbers and satisfying
+the following properties:
+    i.  2 \in S, and
+    ii. if n \in S, then n + 3 \in S
+
+rules-of-inference:
+    -------
+    2 \in S
+
+      n \in S
+    -----------
+    n + 3 \in S
+
+
+
+
+2.  S = { 2n + 3m + 1 | n, m \in N }
+
+top-down: a natural number n is in S if and only if:
+    i.   n = 1, or
+    ii.  n - 2 \in S, or
+    iii. n - 3 \in S
+
+bottom-up: the smallest set S contained in the natural numbers and satisfying
+the following properties:
+    i.   1 \in S, and
+    ii.  if n \in S, then n + 2 \in S, and
+    iii. if n \in S, then n + 3 \in S
+
+rules-of-inference:
+    -------
+    1 \in S
+
+    n \in S
+    -----------
+    n + 2 \in S
+
+    n \in S
+    -----------
+    n + 3 \in S
+
+
+
+
+3.  S = { (n, 2n + 1) | n \in N }
+
+top-down: a pair of natural numbers (n, m) is in S if and only if:
+    i.  n = 0 and m = 1, or
+    ii. (n - 1,  m - 2) \in S
+
+bottom-up: the smallest set S contained in the Cartesian product of a pair
+of natural numbers and satisfying the following properties:
+    i.  (0, 1) \in S, and
+    ii. if (n, m) \in S, then (n + 1, m + 2) \in S
+
+rules-of-inference:
+    ------------
+    (0, 1) \in S
+
+        (n, m) \in S
+    --------------------
+    (n + 1, m + 2) \in S
+
+
+
+
+4.  S = { (n, n^2) | n \in N }.  Do not mention squaring in your rules.  As a
+    hint, remember the equation (n + 1)^2 = n^2 + 2n + 1
+
+top-down: a pair of natural numbers (n, m) is in S if and only if:
+    i.  n = 0
+    ii. (n - 1, (sqrt(m) - 1)^2) \in S
+
+bottom-up: the smallest set S contained in the Cartesian product of a pair
+of natural numbers and satisfying the following properties:
+    i.  (0, 0) \in S, and
+    ii. if (n, m) \in S, then (n + 1, m + 2*sqrt(m) + 1) \in S
+
+rules-of-inference:
+    ------------
+    (0, 0) \in S
+
+    (n, m) \in S
+    --------------------------------
+    (n + 1, m + 2*sqrt(m) + 1) \in S

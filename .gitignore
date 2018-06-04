@@ -1,0 +1,8 @@
+# pdf output files
+*.pdf
+# org-mode generated LaTeX files
+*.tex
+# LaTeX-related files
+auto
+# inline viewing of LaTeX expressions
+ltxpng
